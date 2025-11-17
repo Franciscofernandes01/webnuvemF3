@@ -26,10 +26,6 @@ jobs:
     - name: Run Backend Tests
       run: npm test
       working-directory: meu-app/backend
-      #env:
-        # Variáveis de ambiente para o teste de backend (se necessário)
-        # Como os testes de unidade do modelo não dependem de conexão real com o DB, não é necessário o MONGO_URI
-        # Mas se fossem testes de integração, seria necessário um mock ou um DB de teste.
 
     - name: Install Frontend Dependencies
       run: npm install
