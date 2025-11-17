@@ -2,15 +2,11 @@
 node_modules/
 npm-debug.log
 yarn-error.log
-
 # ENV
 .env
-
 # OS
 .DS_Store
 Thumbs.db
-
-
 # Build / IDE
 dist/
 build/
