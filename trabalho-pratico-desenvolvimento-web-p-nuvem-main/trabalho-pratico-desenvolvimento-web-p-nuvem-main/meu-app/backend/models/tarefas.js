@@ -4,6 +4,10 @@ const tarefaSchema = new mongoose.Schema({
   titulo: {
     type: String,
     required: true
+  },
+    concluida: {
+    type: Boolean,
+    default: false // ✅ valor padrão
   }
 });
 

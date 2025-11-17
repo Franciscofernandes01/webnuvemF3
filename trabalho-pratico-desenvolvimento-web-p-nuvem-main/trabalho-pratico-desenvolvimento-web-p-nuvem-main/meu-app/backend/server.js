@@ -9,17 +9,15 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
-// 🔹 Configurar __dirname no ES Modules
+// Configurar __dirname no ES Modules
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
-
-// 🔹 Servir frontend
+// Servir frontend
 app.use(express.static(path.join(__dirname, "../frontend")));
 
-// 🔗 Conectar ao MongoDB Atlas
+// Conectar MongoDB
 const MONGO_URI = "mongodb+srv://franciscofernandes10_db_user:ObBP4uqp2nYR8nEn@cluster0.acqlt5x.mongodb.net/";
-
 mongoose.connect(MONGO_URI, {
   useNewUrlParser: true,
   useUnifiedTopology: true
@@ -27,19 +25,9 @@ mongoose.connect(MONGO_URI, {
 .then(() => console.log("✅ Conectado ao MongoDB Atlas"))
 .catch(err => console.error("❌ Erro ao conectar:", err));
 
-// 🔹 Rotas da API (prefixo /api)
+// Rotas da API
 app.get("/api", (req, res) => {
   res.json({ message: "API funcionando 🚀" });
-});
-
-app.post("/api/tarefas", async (req, res) => {
-  try {
-    const tarefa = new Tarefa({ titulo: req.body.titulo });
-    await tarefa.save();
-    res.json(tarefa);
-  } catch (err) {
-    res.status(500).json({ erro: "Erro ao salvar tarefa" });
-  }
 });
 
 app.get("/api/tarefas", async (req, res) => {
@@ -47,11 +35,20 @@ app.get("/api/tarefas", async (req, res) => {
   res.json(tarefas);
 });
 
-// 🔹 Fallback: qualquer outra rota retorna index.html
+app.post("/api/tarefas", async (req, res) => {
+  try {
+    const tarefa = new Tarefa({ titulo: req.body.titulo });
+    await tarefa.save();
+    res.status(201).json(tarefa);
+  } catch (err) {
+    res.status(500).json({ erro: "Erro ao salvar tarefa" });
+  }
+});
+
+// Fallback frontend
 app.get("*", (req, res) => {
   res.sendFile(path.join(__dirname, "../frontend/index.html"));
 });
 
-// 🔹 Porta dinâmica para Render ou padrão 3000
-const PORT = process.env.PORT || 3000;
-app.listen(PORT, () => console.log(`Servidor rodando na porta ${PORT}`));
+// 🔹 **Exportar app para testes**
+export default app;

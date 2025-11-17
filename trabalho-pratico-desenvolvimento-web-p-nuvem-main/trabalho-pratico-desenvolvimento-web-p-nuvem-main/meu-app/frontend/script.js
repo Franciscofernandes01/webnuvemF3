@@ -33,4 +33,9 @@ form.addEventListener("submit", async (e) => {
 });
 
 // Inicializar
-carregarTarefas();
+ carregarTarefas();
+
+// Exportar para testes
+if (typeof module !== 'undefined' && module.exports) {
+    module.exports = { carregarTarefas };
+}
