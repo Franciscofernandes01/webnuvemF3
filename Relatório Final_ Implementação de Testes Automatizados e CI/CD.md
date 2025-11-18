@@ -69,7 +69,7 @@ O projeto está pronto para ser versionado e ter seu CI/CD executado.
 
 **Ação Necessária:** O usuário deve criar um repositório público no GitHub, fazer o *upload* do código e inserir o link aqui.
 
-> **Link do Repositório:** [INSERIR LINK DO REPOSITÓRIO PÚBLICO AQUI]
+> **Link do Repositório:** [(https://github.com/Franciscofernandes01/webnuvemF3)]
 
 ### 5.2. Print ou Vídeo do CI em Funcionamento
 
