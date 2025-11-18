@@ -11,35 +11,29 @@ jobs:
     runs-on: ubuntu-latest
     
     steps:
-    - name: Checkout code
-      uses: actions/checkout@v4
+      - name: Checkout code
+        uses: actions/checkout@v4
 
-    - name: Set up Node.js
-      uses: actions/setup-node@v4
-      with:
-        node-version: '20'
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
 
-    - name: Install Backend Dependencies
-      run: npm install
-      working-directory: meu-app/backend
+      - name: Install Backend Dependencies
+        run: npm install
+        working-directory: meu-app/backend
 
-    - name: Run Backend Tests
-      run: npm test
-      working-directory: meu-app/backend
+      - name: Run Backend Tests
+        run: npm test
+        working-directory: meu-app/backend
 
-    - name: Install Frontend Dependencies
-      run: npm install
-      working-directory: meu-app/frontend
+      - name: Install Frontend Dependencies
+        run: npm install
+        working-directory: meu-app/frontend
 
-    - name: Run Frontend Tests
-      run: npm test
-      working-directory: meu-app/frontend
+      - name: Run Frontend Tests
+        run: npm test
+        working-directory: meu-app/frontend
 
-    # A etapa de Deploy Automático é omitida por enquanto, pois o deploy real
-    # depende de um serviço de hospedagem (como Render, Vercel, AWS, etc.)
-    # e das credenciais do usuário. O foco agora é no CI (Testes).
-    # Para fins de demonstração do CI, a execução dos testes é suficiente.
-    # Se o usuário fornecer um serviço de deploy, esta etapa será adicionada.
-    
-    - name: Deploy (Placeholder)
-      run: echo "Deploy step would go here if a target environment was provided."
+      - name: Deploy (Placeholder)
+        run: echo "Deploy step would go here if a target environment was provided."
